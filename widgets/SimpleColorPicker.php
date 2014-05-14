@@ -8,7 +8,6 @@
 
 namespace talma\widgets;
 
-use yii\base\InvalidConfigException;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\widgets\InputWidget;
@@ -26,7 +25,10 @@ class SimpleColorPicker extends InputWidget
      * @var array Additional config
      */
     public $config = [];
-    
+
+    /**
+     * @var array Colors to display
+     */
     public $colors = [
         '#7bd148' => 'Green',
         '#5484ed' => 'Bold blue',
@@ -41,12 +43,37 @@ class SimpleColorPicker extends InputWidget
         '#dbadff' => 'Purple',
         '#e1e1e1' => 'Gray'
     ];
+
+    /**
+     * @var boolean Show the colors inside a picker instead of inline
+     */
+    public $picker = true;
+
+    /**
+     * @var integer Show and hide animation delay in milliseconds
+     */
+    public $pickerDelay = 0;
+
+    /**
+     * @var string Tag to hold the input if the colors are displayed in a picker
+     */
+    public $tag = 'div';
+
+    /**
+     * @var array the HTML attributes for the holder tag
+     */
+    public $tagOptions = [];
     
     /**
      * @var array the HTML attributes for the input tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $options = ['class' => 'form-control'];
+
+    /**
+     * @var string Hash of plugin options
+     */
+    public $hashOptions;
 
     /**
      * Initializes the widget.
@@ -66,9 +93,15 @@ class SimpleColorPicker extends InputWidget
         $this->options['data-plugin-name'] = 'simplecolorpicker';
 
         if ($this->hasModel()) {
-            echo Html::activeSelectInput($this->model, $this->attribute, $this->options);
+            $input = Html::activeDropDownList($this->model, $this->attribute, $this->colors, $this->options);
         } else {
-            echo Html::selectInput($this->name, $this->value, $this->options);
+            $input = Html::dropDownList($this->name, $this->value, $this->colors, $this->options);
+        }
+
+        if ($this->picker) {
+            echo Html::tag($this->tag, $input, $this->tagOptions);
+        } else {
+            echo $input;
         }
     }
 
@@ -93,6 +126,9 @@ class SimpleColorPicker extends InputWidget
      */
     protected function getClientOptions()
     {
+        $options['picker'] = $this->picker;
+        $options['pickerDelay'] = $this->pickerDelay;
+
         $options = array_merge($options, $this->config);
         return Json::encode($options);
     }
