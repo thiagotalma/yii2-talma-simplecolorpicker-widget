@@ -30,18 +30,30 @@ class SimpleColorPicker extends InputWidget
      * @var array Colors to display
      */
     public $colors = [
-        '#7bd148' => 'Green',
-        '#5484ed' => 'Bold blue',
-        '#a4bdfc' => 'Blue',
-        '#46d6db' => 'Turquoise',
-        '#7ae7bf' => 'Light green',
-        '#51b749' => 'Bold green',
-        '#fbd75b' => 'Yellow',
-        '#ffb878' => 'Orange',
-        '#ff887c' => 'Red',
-        '#dc2127' => 'Bold red',
-        '#dbadff' => 'Purple',
-        '#e1e1e1' => 'Gray'
+        '#AC725E' => 'Santa Fe',
+        '#D06B64' => 'Chestnut Rose',
+        '#F83A22' => 'Pomegranateapprox',
+        '#FA573C' => 'Sunset Orange',
+        '#FF7537' => 'Burning Orange',
+        '#FFAD46' => 'Yellow Orange',
+        '#42D692' => 'Shamrock',
+        '#16A765' => 'Mountain Meadow',
+        '#7BD148' => 'Atlantis',
+        '#B3DC6C' => 'Yellow Green',
+        '#FBE983' => 'Sweet Corn',
+        '#FAD165' => 'Goldenrod',
+        '#92E1C0' => 'Algae Green',
+        '#9FE1E7' => 'Water Leaf',
+        '#9FC6E7' => 'Regent St Blue',
+        '#4986E7' => 'Royal Blue',
+        '#9A9CFF' => 'Melrose',
+        '#B99AFF' => 'Mauve',
+        '#C2C2C2' => 'Silver',
+        '#CABDBF' => 'Cold Turkey',
+        '#CCA6AC' => 'Clam Shell',
+        '#F691B2' => 'Persian Pink',
+        '#CD74E6' => 'Lavender',
+        '#A47AE2' => 'Medium Purple'
     ];
 
     /**
