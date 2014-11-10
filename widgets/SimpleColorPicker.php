@@ -104,10 +104,22 @@ class SimpleColorPicker extends InputWidget
 
         $this->options['data-plugin-name'] = 'simplecolorpicker';
 
+        $colors = $this->colors;
+
         if ($this->hasModel()) {
-            $input = Html::activeDropDownList($this->model, $this->attribute, $this->colors, $this->options);
+            $value = $this->model->{$this->attribute};
         } else {
-            $input = Html::dropDownList($this->name, $this->value, $this->colors, $this->options);
+            $value = $this->value;
+        }
+
+        if ($value !== null && !in_array($value, $colors)) {
+            $colors = array_merge($colors, [$value => 'Custom']);
+        }
+
+        if ($this->hasModel()) {
+            $input = Html::activeDropDownList($this->model, $this->attribute, $colors, $this->options);
+        } else {
+            $input = Html::dropDownList($this->name, $this->value, $colors, $this->options);
         }
 
         if ($this->picker) {
