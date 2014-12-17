@@ -107,7 +107,7 @@ class SimpleColorPicker extends InputWidget
         $colors = $this->colors;
 
         if ($this->hasModel()) {
-            $value = $this->model->{$this->attribute};
+            $value = Html::getAttributeValue($this->model, $this->attribute);
         } else {
             $value = $this->value;
         }
